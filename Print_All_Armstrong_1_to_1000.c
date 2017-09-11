@@ -1,7 +1,8 @@
 #include<stdio.h>
 #include<conio.h>
 void main(){
-	/* Print armstrong from 1 to 1000*/
+	/* Print armstrong from 1 to 1000*/	
+	printf("\t Program by Rohit Kumar for Printing all Armstrong From 1 to 1000 \t \t \t \n"); 
 	int num,temp,sum,r,a;
     for(a=1;a<=1000;a++){ 
 	num = a;
