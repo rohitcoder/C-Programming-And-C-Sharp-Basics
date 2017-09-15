@@ -1,0 +1,16 @@
+#include<conio.h>
+#include<stdio.h>
+void main(){ 
+ int  n1=0,n2=1,n3,i,n;
+ printf("\nPlease enter Range of Fibonacci : ");
+ scanf("%d",&n);
+ printf("\nFibonacci Output is");
+ printf("\n%d",n1);
+ printf("\n%d",n2);
+ for(i=3;i<=n;i++){
+    n3 = n1+n2;
+ 	n1 = n2;
+ 	n2 = n3;
+    printf("\n%d",n3);
+ }
+}
