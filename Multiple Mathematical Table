@@ -1,0 +1,18 @@
+#include<conio.h>
+#include<stdio.h>
+void main(){
+	int num1,i,key_stroke; 
+test:
+printf("\n-------------------------------------------------------");
+printf("\n-------------------------------------------------------");
+printf("\n Please enter Any Number for printing table: ");
+scanf("%d",&num1);  
+for(i=1;i<=10;i++){ 
+     printf("\n%dX%d=%d",num1,i,i*num1);
+}
+printf("\n\n\nDo You want to Print Table Again? Press 1 for yes 0 for No: ");
+scanf("%d",&key_stroke);
+if(key_stroke==1){
+	goto test;
+} 
+}
