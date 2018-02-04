@@ -1,0 +1,14 @@
+#include<stdio.h>
+void main(){
+	int a,b,c;
+	a=5;
+	b=6;
+	printf("Enter two numbers for swapping it\n");
+	scanf("%d",&a);
+	scanf("%d",&b);
+	printf("\n Entered number was %d%d",a,b);
+	c=a;
+	a=b;
+	b=c;
+	printf("\nAfter reversing it %d%d",a,b);
+}
