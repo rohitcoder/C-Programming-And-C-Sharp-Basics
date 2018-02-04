@@ -1,0 +1,10 @@
+#include<stdio.h>
+void main(){
+	int a,b;
+	int *p, *q;
+	printf("Enter 2 numbers for adding them using pointers...");
+	scanf("%d%d",&a,&b);
+	p=&a;
+	q=&b;
+	printf("%u",*p+*q);
+}
