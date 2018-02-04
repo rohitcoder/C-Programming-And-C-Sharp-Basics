@@ -1,0 +1,11 @@
+#include<stdio.h>
+void main(){
+	int a,b; 
+	printf("Enter 2 numbers for adding them using pointers...");
+	scanf("%d%d",&a,&b); 
+    addit(&a,&b);
+}
+
+void addit(int *p,int *q){
+	printf("%d",*p+*q);
+}
