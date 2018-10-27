@@ -1,0 +1,65 @@
+#include<stdio.h>
+#include<conio.h>
+void linear(int arr[],int a);
+void binary(int arr[],int a);
+void main()
+{
+int array[5],n,i,b;
+clrscr();
+printf("Enter the number of elements in Array\n");
+scanf("%d",&n);
+printf("Enter the Array\n");
+for(i=1;i<=n;i++)
+ {
+ scanf("%d",&array[i]);
+ }
+printf("Enter your choice for type of search");
+printf("\n1. LINEAR SEARCH \n2. BINARY SEARCH\n ");
+scanf("%d",&b);
+if (b==1)
+{
+linear(array,n);
+}
+if (b==2)
+{
+binary(array,n);
+}
+getch();
+}
+void linear(int arr[],int a)
+{
+int m,j,search;
+printf("\nYOU ARE IN LINEAR SEARCH");
+printf("\nEnter the element u want to search\n");
+scanf("\n%d",&search);
+for(j=1;j<=a;j++)
+{
+ if (search==arr[j])
+ printf("\nNumber is at %dth from starting",j);
+}
+}
+
+void binary(int arr[],int a)
+{
+int first , last , mid,j,search;
+first=0;
+last=a-1;
+mid = (first+last)/2;
+printf(" Enter the element you want to search");
+scanf("%d",&search);
+while (first<=last)
+{
+if (arr[mid]<search)
+first = mid+1;
+else if (arr[mid]==search)
+{
+printf("Element is at %d from starting",mid);
+break;
+}
+else
+last=mid-1;
+mid=(first+last)/2;
+}
+if(first>last)
+printf("element is at %d",mid+1);
+}
