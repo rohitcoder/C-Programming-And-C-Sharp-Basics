@@ -1,108 +1,189 @@
 #include<stdio.h>
 #include<conio.h>
 #include<malloc.h>
-struct node{
-int data;
-struct node *next;
+struct node
+{
+    int data;
+    struct node *next;
 }*p=NULL;
-
-void AddAtBeg(int num){
+void addatbeg(int num)
+{
     struct node *temp;
-    temp = (struct node *)malloc(sizeof(struct node));
-    temp->data = num;
-    if(p==NULL){
-      temp->next=NULL;
-      p=temp;
-    }else{
-      temp->next=p;
-      p=temp;
-    }
-}
-void AddAtEnd(int num){
-    struct node *temp,*r;
-    temp = (struct node *)malloc(sizeof(struct node));
-    temp->data = num;
-    r=p;
-    if(p==NULL){
+    temp= (struct node *)malloc(sizeof(struct node));
+    temp->data=num;
+    if(p==NULL)
+    {
         temp->next=NULL;
         p=temp;
-    }else{
-        while(r->next!=NULL){
-            r=r->next;
-        }
-        temp->next=NULL;
-        r->next=temp;
+    }
+    else
+    {
+        temp->next=p;
+        p=temp;
     }
 
 }
-int search(int item){
+int search(int item)
+{
     struct node *r;
     r=p;
-    while(r!=NULL){
-        if(r->data==item){
+    while(r!=NULL)
+    {
+        if(r->data==item)
+        {
             return r;
         }
         r=r->next;
     }
     return NULL;
 }
-void AddAfterNode(int num, int num1){
+void addafternode(int num,int num1)
+{
     struct node *temp,*loc;
-    temp = (struct node *)malloc(sizeof(struct node));
-    temp->data = num;
+    temp= (struct node *)malloc(sizeof(struct node));
+    temp->data=num;
     loc=search(num1);
-    if(p==NULL && loc==NULL){
-        printf("No node found");
-    }else if(loc->next==NULL){
-        temp->next=loc->next;
-        loc->next =temp;
-    }else{
-        temp->next=loc->next;
-        loc->next=temp;
+    if(p==NULL)
+    {
+        printf("\n Linked List is empty...!!\n");
     }
+    else if(loc==NULL && p != NULL)
+    {
+        printf("\n Node does not exist...!!! \n");
+    }
+    else if(loc->next == NULL)
+    {
+        loc->next=temp;
+        temp->next = NULL;
+
+    }
+    else{
+
+        temp->next = loc->next;
+        loc->next = temp;
+    }
+
 }
-void display(){
+void addatend(int num)
+{
+    struct node *temp;
+    temp= (struct node *)malloc(sizeof(struct node));
+    temp->data=num;
+    if(p==NULL)
+    {
+        temp->next=NULL;
+        p=temp;
+    }
+    else
+    {
+        struct node *x;
+        x=p;
+        while(x->next != NULL)
+        {
+            x=x->next;
+        }
+        x->next=temp;
+        temp->next=NULL;
+    }
+
+}
+void display()
+{
     struct node *r;
     r=p;
-    if(p==NULL){
-        printf("\nLinked list is empty");
-    }else{
-        while(r!=NULL){
-            printf("\n%d",r->data);
+    if(r==NULL)
+    {
+        printf("\n Linked List is empty...!!!\n");
+    }
+    else{
+
+        while(r != NULL)
+        {
+            printf("\n %d",r->data);
             r=r->next;
         }
     }
 }
-int main(){
-    int choice,num,num1;
-    while(1){
-    printf("\n1. Add at begining");
-    printf("\n2. Add at end");
-    printf("\n3. Add after given node");
-    printf("\n4. Print");
-    printf("\n\nEnter your choice: ");
-    scanf("%d",&choice);
-    switch(choice){
-    case 1:
-            printf("\n Enter number: ");
-            scanf("%d",&num);
-            AddAtBeg(num);
-            break;
-    case 2: printf("\n Enter number: ");
-            scanf("%d",&num);
-            AddAtEnd(num);
-            break;
-    case 3: printf("\n Enter position: ");
-            scanf("%d",&num);
-            printf("\n Enter number: ");
-            scanf("%d",&num1);
-            AddAfterNode(num1, num);
-            break;
-    case 4:display();
-           break;
+void delatbeg()
+{
+    struct node *r;
+    r=p;
+    if(r==NULL)
+    {
+        printf("\n Linked List is Empty...!!!\n");
     }
-
+    else
+    {
+        p=r->next;
+        free(r);
     }
-
 }
+void delatend()
+{
+    struct node *r;
+    r=p;
+    if(r==NULL)
+    {
+        printf("\n Linked List is Empty...!!!\n");
+    }
+    else
+    {
+        struct node *x;
+        x=r->next;
+        if(r->next ==NULL)
+        {
+            p=NULL;
+            free(r);
+        }
+        else{
+                while(x->next != NULL)
+                {
+                    r=x;
+                    x=x->next;
 
+                }
+                r->next=NULL;
+                free(x);
+
+        }
+    }
+}
+void main()
+{
+    int num,choice,num1;
+    while(1)
+    {
+        printf("\n\n Menu \n\n");
+        printf("\n 1. Insertion at beginning");
+        printf("\n 2. Insertion at end");
+        printf("\n 3. Insertion after given node");
+        printf("\n 4. Deletion at beginning");
+        printf("\n 5. Deletion at end");
+        printf("\n 6. Display");
+        printf("\n\n Enter the choice : ");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1: printf("\n Enter the number : ");
+                    scanf("%d",&num);
+                    addatbeg(num);
+                    break;
+            case 2: printf("\n Enter the number : ");
+                    scanf("%d",&num);
+                    addatend(num);
+                    break;
+            case 3: printf("\n Enter the number : ");
+                    scanf("%d",&num);
+                    printf("\n Enter the node after which you want to insert  : ");
+                    scanf("%d",&num1);
+                    addafternode(num,num1);
+                    break;
+            case 4: delatbeg();
+                    break;
+            case 5: delatend();
+                    break;
+            case 6: display();
+                    break;
+        }
+    }
+}
